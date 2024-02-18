@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./build/Dockerfile
+    restart: unless-stopped
+    networks:
+      - network
+    deploy:
+      replicas: 2
+networks:
+  network:
+    name: expression-network
+    driver: bridge
+    external: true
